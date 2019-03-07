@@ -7,17 +7,47 @@ public class SplitTemporaryVariable {
     int _delay;
     double _secondaryForce;
 
+    public SplitTemporaryVariable(double _primaryForce, double _mass, int _delay, double _secondaryForce) {
+        this._primaryForce = _primaryForce;
+        this._mass = _mass;
+        this._delay = _delay;
+        this._secondaryForce = _secondaryForce;
+    }
+
     double getDistanceTravelled(int time) {
-        double result;
-        final double primaryAcc = _primaryForce / _mass;
-        int primaryTime = Math.min(time, _delay);
-        result = 0.5 * primaryAcc * primaryTime * primaryTime;
-        int secondaryTime = time - _delay;
-        if (secondaryTime > 0) {
-            double primaryVel = primaryAcc * _delay;
-            final double secondaryAcc = (_primaryForce + _secondaryForce) / _mass;
-            result += primaryVel * secondaryTime + 0.5 * secondaryAcc * secondaryTime * secondaryTime;
-        }
-        return result;
+
+        return secondaryTime(time) > 0 ?
+                getDistanceWithSecondaryTimeGreaterThanZero(time) :
+                getDistance(primaryAcceleration(), primaryTime(time));
+    }
+
+    private double getDistanceWithSecondaryTimeGreaterThanZero(int time) {
+        return getDistance(primaryAcceleration(), primaryTime(time))
+                + primaryVelocity() * secondaryTime(time)
+                + getDistance(secondaryAcceleration(), secondaryTime(time));
+    }
+
+    private double secondaryAcceleration() {
+        return (_primaryForce + _secondaryForce) / _mass;
+    }
+
+    private double primaryVelocity() {
+        return primaryAcceleration() * _delay;
+    }
+
+    private int secondaryTime(int time) {
+        return time - _delay;
+    }
+
+    private int primaryTime(int time) {
+        return Math.min(time, _delay);
+    }
+
+    private double primaryAcceleration() {
+        return _primaryForce / _mass;
+    }
+
+    private double getDistance(double acceleration, int time) {
+        return 0.5 * acceleration * time * time;
     }
 }
