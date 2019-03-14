@@ -22,7 +22,7 @@ public class TennisGame1 implements TennisGame {
         if (scorePlayer1 == scorePlayer2) {
             return getScoreWhenPointsAreEqual();
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
-            return getScoreWhenPointsAreMoreThanThirty();
+            return getScoreWhenOnePlayerHasAdvantage();
         } else {
             return getScoreWhenPointsAreLessThanForty();
         }
@@ -37,7 +37,7 @@ public class TennisGame1 implements TennisGame {
     private String buildScoreString(int tempScore) {
         switch (tempScore) {
             case 0:
-                return  "Love";
+                return "Love";
             case 1:
                 return "Fifteen";
             case 2:
@@ -45,9 +45,10 @@ public class TennisGame1 implements TennisGame {
             case 3:
                 return "Forty";
         }
+        return "";
     }
 
-    private String getScoreWhenPointsAreMoreThanThirty() {
+    private String getScoreWhenOnePlayerHasAdvantage() {
         String score;
         int minusResult = scorePlayer1 - scorePlayer2;
         if (minusResult == 1) score = "Advantage player1";
