@@ -29,28 +29,22 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenPointsAreLessThanForty() {
-        String score = "";
-        return buildScoreString(score, scorePlayer1)
+        return buildScoreString(scorePlayer1)
                 + "-"
-                + buildScoreString(score, scorePlayer2);
+                + buildScoreString(scorePlayer2);
     }
 
-    private String buildScoreString(String score, int tempScore) {
+    private String buildScoreString(int tempScore) {
         switch (tempScore) {
             case 0:
-                score += "Love";
-                break;
+                return  "Love";
             case 1:
-                score += "Fifteen";
-                break;
+                return "Fifteen";
             case 2:
-                score += "Thirty";
-                break;
+                return "Thirty";
             case 3:
-                score += "Forty";
-                break;
+                return "Forty";
         }
-        return score;
     }
 
     private String getScoreWhenPointsAreMoreThanThirty() {
