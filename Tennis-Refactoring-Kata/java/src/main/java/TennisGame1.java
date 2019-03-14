@@ -20,7 +20,6 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        int tempScore = 0;
         if (scorePlayer1 == scorePlayer2) {
             score = getScoreWhenPointsAreEqual();
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
