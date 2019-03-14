@@ -25,12 +25,13 @@ public class TennisGame1 implements TennisGame {
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
             score = getScoreWhenPointsAreMoreThanThirty();
         } else {
-            score = getScoreWhenPointsAreLessThanForty(score);
+            score = getScoreWhenPointsAreLessThanForty();
         }
         return score;
     }
 
-    private String getScoreWhenPointsAreLessThanForty(String score) {
+    private String getScoreWhenPointsAreLessThanForty() {
+        String score = "";
         int tempScore;
         for (int i = 1; i < 3; i++) {
             if (i == 1) tempScore = scorePlayer1;
