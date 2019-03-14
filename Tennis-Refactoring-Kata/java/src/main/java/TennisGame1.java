@@ -30,16 +30,9 @@ public class TennisGame1 implements TennisGame {
 
     private String getScoreWhenPointsAreLessThanForty() {
         String score = "";
-        int tempScore;
-        for (int i = 1; i < 3; i++) {
-            if (i == 1) tempScore = scorePlayer1;
-            else {
-                score += "-";
-                tempScore = scorePlayer2;
-            }
-            score = buildScoreString(score, tempScore);
-        }
-        return score;
+        return buildScoreString(score, scorePlayer1)
+                + "-"
+                + buildScoreString(score, scorePlayer2);
     }
 
     private String buildScoreString(String score, int tempScore) {
