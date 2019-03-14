@@ -37,20 +37,25 @@ public class TennisGame1 implements TennisGame {
                 score += "-";
                 tempScore = scorePlayer2;
             }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
+            score = buildScoreString(score, tempScore);
+        }
+        return score;
+    }
+
+    private String buildScoreString(String score, int tempScore) {
+        switch (tempScore) {
+            case 0:
+                score += "Love";
+                break;
+            case 1:
+                score += "Fifteen";
+                break;
+            case 2:
+                score += "Thirty";
+                break;
+            case 3:
+                score += "Forty";
+                break;
         }
         return score;
     }
