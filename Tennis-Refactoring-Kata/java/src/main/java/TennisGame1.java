@@ -20,7 +20,7 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         if (scorePlayer1 == scorePlayer2) {
-            return getScoreWhenPointsAreEqual();
+            return getScoreStringWhenPointsAreEqual();
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
             return getScoreWhenOnePlayerHasAdvantage();
         } else {
@@ -29,9 +29,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenPointsAreLessThanForty() {
-        return getScoreString(scorePlayer1)
-                + "-"
-                + getScoreString(scorePlayer2);
+        return getScoreString(scorePlayer1) + "-" + getScoreString(scorePlayer2);
     }
 
     private String getScoreString(int tempScore) {
@@ -58,7 +56,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private String getScoreWhenPointsAreEqual() {
+    private String getScoreStringWhenPointsAreEqual() {
         switch (scorePlayer1) {
             case 0:
                 return "Love-All";
