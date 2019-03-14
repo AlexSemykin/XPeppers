@@ -19,15 +19,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
         if (scorePlayer1 == scorePlayer2) {
-            score = getScoreWhenPointsAreEqual();
+            return getScoreWhenPointsAreEqual();
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
-            score = getScoreWhenPointsAreMoreThanThirty();
+            return getScoreWhenPointsAreMoreThanThirty();
         } else {
-            score = getScoreWhenPointsAreLessThanForty();
+            return getScoreWhenPointsAreLessThanForty();
         }
-        return score;
     }
 
     private String getScoreWhenPointsAreLessThanForty() {
