@@ -28,12 +28,8 @@ public class Players {
         return player2Name;
     }
 
-    public int getPlayer1Score() {
-        return players.get(getPlayer1Name());
-    }
-
-    public int getPlayer2Score() {
-        return players.get(getPlayer2Name());
+    public int getPlayerScore(String name) {
+        return players.get(name);
     }
 
     public void setPlayer1Score(int score) {
