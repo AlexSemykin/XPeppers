@@ -28,11 +28,19 @@ public class Players {
         return player2Name;
     }
 
-    public void setPlayer1Score(int score){
+    public int getPlayer1Score() {
+        return players.get(getPlayer1Name());
+    }
+
+    public int getPlayer2Score() {
+        return players.get(getPlayer2Name());
+    }
+
+    public void setPlayer1Score(int score) {
         players.put(getPlayer1Name(), score);
     }
 
-    public void setPlayer2Score(int score){
+    public void setPlayer2Score(int score) {
         players.put(getPlayer2Name(), score);
     }
 
