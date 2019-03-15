@@ -1,31 +1,23 @@
 
 public class TennisGame1 implements TennisGame {
 
-    private int scorePlayer1 = 0;
-    private int scorePlayer2 = 0;
-    private String player1Name;
-    private String player2Name;
+    Players p;
 
-    Players players;
-
-    public TennisGame1(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
-
-        players = new Players(player1Name, player2Name);
+    TennisGame1(String player1Name, String player2Name) {
+        p = new Players(player1Name, player2Name);
     }
 
     public void wonPoint(String playerName) {
-        if (playerName.equals(player1Name))
-            scorePlayer1 += 1;
-        else if (playerName.equals(player2Name))
-            scorePlayer2 += 1;
+        if (playerName.equals(p.getPlayer1Name()))
+            p.addOnePointToPlayer1();
+        else if (playerName.equals(p.getPlayer2Name()))
+            p.addOnePointToPlayer2();
     }
 
     public String getScore() {
-        if (scorePlayer1 == scorePlayer2) {
+        if (p.getScorePlayer1() == p.getScorePlayer2()) {
             return getScoreStringWhenPointsAreEqual();
-        } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
+        } else if (p.getScorePlayer1() >= 4 || p.getScorePlayer2() >= 4) {
             return getScoreWhenOnePlayerHasAdvantage();
         } else {
             return getScoreWhenPointsAreLessThanForty();
@@ -33,7 +25,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenPointsAreLessThanForty() {
-        return getScoreString(scorePlayer1) + "-" + getScoreString(scorePlayer2);
+        return getScoreString(p.getScorePlayer1()) + "-" + getScoreString(p.getScorePlayer2());
     }
 
     private String getScoreString(int tempScore) {
@@ -52,7 +44,7 @@ public class TennisGame1 implements TennisGame {
 
     private String getScoreWhenOnePlayerHasAdvantage() {
         String score;
-        int minusResult = scorePlayer1 - scorePlayer2;
+        int minusResult = p.getScorePlayer1() - p.getScorePlayer2();
         if (minusResult == 1) score = "Advantage player1";
         else if (minusResult == -1) score = "Advantage player2";
         else if (minusResult >= 2) score = "Win for player1";
@@ -61,7 +53,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreStringWhenPointsAreEqual() {
-        switch (scorePlayer1) {
+        switch (p.getScorePlayer1()) {
             case 0:
                 return "Love-All";
             case 1:
