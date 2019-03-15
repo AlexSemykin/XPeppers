@@ -44,12 +44,7 @@ public class Players {
         players.put(getPlayer2Name(), score);
     }
 
-    public void addOnePointToPlayer1() {
-        players.put(getPlayer1Name(), getPlayer1Score() + 1);
+    public void addOnePointToPlayer(String name) {
+        players.put(name, players.get(name) + 1);
     }
-
-    public void addOnePointToPlayer2() {
-        players.put(getPlayer2Name(), getPlayer2Score() + 1);
-    }
-
 }
