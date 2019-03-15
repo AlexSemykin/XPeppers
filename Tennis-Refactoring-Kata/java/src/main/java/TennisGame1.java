@@ -8,16 +8,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName.equals(p.getPlayer1Name()))
-            p.addOnePointToPlayer1();
-        else if (playerName.equals(p.getPlayer2Name()))
-            p.addOnePointToPlayer2();
+        p.addOnePointToPlayer(playerName);
     }
 
     public String getScore() {
-        if (p.getScorePlayer1() == p.getScorePlayer2()) {
+        if (p.getScore(p.getPlayer1Name()) == p.getScore(p.getPlayer2Name())) {
             return getScoreStringWhenPointsAreEqual();
-        } else if (p.getScorePlayer1() >= 4 || p.getScorePlayer2() >= 4) {
+        } else if (p.getScore(p.getPlayer1Name()) >= 4 || p.getScore(p.getPlayer2Name()) >= 4) {
             return getScoreWhenOnePlayerHasAdvantage();
         } else {
             return getScoreWhenPointsAreLessThanForty();
@@ -25,7 +22,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenPointsAreLessThanForty() {
-        return getScoreString(p.getScorePlayer1()) + "-" + getScoreString(p.getScorePlayer2());
+        return getScoreString(p.getScore(p.getPlayer1Name())) + "-" + getScoreString(p.getScore(p.getPlayer2Name()));
     }
 
     private String getScoreString(int tempScore) {
@@ -44,7 +41,7 @@ public class TennisGame1 implements TennisGame {
 
     private String getScoreWhenOnePlayerHasAdvantage() {
         String score;
-        int minusResult = p.getScorePlayer1() - p.getScorePlayer2();
+        int minusResult = p.getScore(p.getPlayer1Name()) - p.getScore(p.getPlayer2Name());
         if (minusResult == 1) score = "Advantage player1";
         else if (minusResult == -1) score = "Advantage player2";
         else if (minusResult >= 2) score = "Win for player1";
@@ -53,7 +50,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreStringWhenPointsAreEqual() {
-        switch (p.getScorePlayer1()) {
+        switch (p.getScore(p.getPlayer1Name())) {
             case 0:
                 return "Love-All";
             case 1:

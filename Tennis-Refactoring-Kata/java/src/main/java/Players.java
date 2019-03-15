@@ -1,13 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Players {
+class Players {
     private String player1Name;
     private String player2Name;
 
     private Map<String, Integer> players;
 
-    public Players(String player1Name, String player2Name) {
+    Players(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
 
@@ -20,35 +20,19 @@ public class Players {
         players.put(player2Name, 0);
     }
 
-    public String getPlayer1Name() {
+    String getPlayer1Name() {
         return player1Name;
     }
 
-    public String getPlayer2Name() {
+    String getPlayer2Name() {
         return player2Name;
     }
 
-    public int getScorePlayer1() {
-        return players.get(getPlayer1Name());
+    int getScore(String name) {
+        return players.get(name);
     }
 
-    public int getScorePlayer2() {
-        return players.get(getPlayer2Name());
-    }
-
-    public void setPlayer1Score(int score) {
-        players.put(getPlayer1Name(), score);
-    }
-
-    public void setPlayer2Score(int score) {
-        players.put(getPlayer2Name(), score);
-    }
-
-    public void addOnePointToPlayer1() {
-        players.put(getPlayer1Name(), players.get(getPlayer1Name()) + 1);
-    }
-
-    public void addOnePointToPlayer2() {
-        players.put(getPlayer2Name(), players.get(getPlayer2Name()) + 1);
+    void addOnePointToPlayer(String name) {
+           players.put(name, players.get(name) + 1);
     }
 }
