@@ -24,7 +24,7 @@ class Players {
         players.put(player2Name, 0);
     }
 
-    int getScore(String name) {
+    int getIntScore(String name) {
         return players.get(name);
     }
 
@@ -33,16 +33,16 @@ class Players {
     }
 
     boolean hasEqualScores() {
-        return getScore(player1Name) == getScore(player2Name);
+        return getIntScore(player1Name) == getIntScore(player2Name);
     }
 
     boolean isScoreGreaterThanThirty() {
-        return getScore(player1Name) >= 4 || getScore(player2Name) >= 4;
+        return getIntScore(player1Name) >= 4 || getIntScore(player2Name) >= 4;
     }
 
     String getScoreWhenOnePlayerHasAdvantage() {
         String score;
-        int minusResult = getScore(player1Name) - getScore(player2Name);
+        int minusResult = getIntScore(player1Name) - getIntScore(player2Name);
         if (minusResult == 1) score = "Advantage player1";
         else if (minusResult == -1) score = "Advantage player2";
         else if (minusResult >= 2) score = "Win for player1";
@@ -51,19 +51,13 @@ class Players {
     }
 
     String getScoreWhenPointsAreLessThanForty() {
-        return s.getScoreAsString(getScore(player1Name)) + "-" + s.getScoreAsString(getScore(player2Name));
+        return s.getScoreString(getIntScore(player1Name))
+                + "-"
+                + s.getScoreString(getIntScore(player2Name));
     }
 
+
     String getScoreStringWhenPointsAreEqual() {
-        switch (getScore(player1Name)) {
-            case 0:
-                return "Love-All";
-            case 1:
-                return "Fifteen-All";
-            case 2:
-                return "Thirty-All";
-            default:
-                return "Deuce";
-        }
+        return s.getEqualScoreString(getIntScore(player1Name));
     }
 }

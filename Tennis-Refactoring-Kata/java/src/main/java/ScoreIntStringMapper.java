@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScoreIntStringMapper {
-    private Map<Integer,String> scoreMapper;
-    private Map<Integer,String> equalScoreMapper;
+class ScoreIntStringMapper {
+    private Map<Integer, String> scoreMapper;
+    private Map<Integer, String> equalScoreMapper;
 
-    public ScoreIntStringMapper(){
+    ScoreIntStringMapper() {
         initScoreMapper();
         initEqualScoreMapper();
     }
@@ -25,14 +25,17 @@ public class ScoreIntStringMapper {
         equalScoreMapper.put(0, "Love-All");
         equalScoreMapper.put(1, "Fifteen-All");
         equalScoreMapper.put(2, "Thirty-All");
-        equalScoreMapper.put(3, "Deuce-All");
+        equalScoreMapper.put(3, "Deuce");
     }
 
-    public String getScoreAsString(int score){
+    String getScoreString(int score) {
         return scoreMapper.get(score);
     }
 
-    public String getEqualScoreAsString(int score){
-        return equalScoreMapper.get(score);
+    String getEqualScoreString(int score) {
+        if (score <= 2)
+            return equalScoreMapper.get(score);
+        else
+            return equalScoreMapper.get(3);
     }
 }
