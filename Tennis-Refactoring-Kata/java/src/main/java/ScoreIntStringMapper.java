@@ -32,4 +32,7 @@ public class ScoreIntStringMapper {
         return scoreMapper.get(score);
     }
 
+    public String getEqualScoreMapper(int score){
+        return equalScoreMapper.get(score);
+    }
 }
