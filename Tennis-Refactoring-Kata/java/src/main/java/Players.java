@@ -39,4 +39,8 @@ class Players {
     public boolean hasEqualScores() {
         return getScore(getPlayer1Name()) == getScore(getPlayer2Name());
     }
+
+    public boolean isScoreGreaterThanThirty() {
+        return getScore(getPlayer1Name()) >= 4 || getScore(getPlayer2Name()) >= 4;
+    }
 }

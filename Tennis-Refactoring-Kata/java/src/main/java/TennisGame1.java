@@ -14,7 +14,7 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         if (p.hasEqualScores()) {
             return getScoreStringWhenPointsAreEqual();
-        } else if (p.getScore(p.getPlayer1Name()) >= 4 || p.getScore(p.getPlayer2Name()) >= 4) {
+        } else if (p.isScoreGreaterThanThirty()) {
             return getScoreWhenOnePlayerHasAdvantage();
         } else {
             return getScoreWhenPointsAreLessThanForty();
