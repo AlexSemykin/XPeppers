@@ -7,11 +7,15 @@ class Players {
 
     private Map<String, Integer> players;
 
+    private ScoreIntStringMapper s;
+
     Players(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
 
         initPlayers(player1Name, player2Name);
+
+        s = new ScoreIntStringMapper();
     }
 
     private void initPlayers(String player1Name, String player2Name) {
@@ -47,21 +51,7 @@ class Players {
     }
 
     String getScoreWhenPointsAreLessThanForty() {
-        return getScoreString(getScore(player1Name)) + "-" + getScoreString(getScore(player2Name));
-    }
-
-    private String getScoreString(int tempScore) {
-        switch (tempScore) {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-        }
-        return "";
+        return s.getScoreAsString(getScore(player1Name)) + "-" + s.getScoreAsString(getScore(player2Name));
     }
 
     String getScoreStringWhenPointsAreEqual() {

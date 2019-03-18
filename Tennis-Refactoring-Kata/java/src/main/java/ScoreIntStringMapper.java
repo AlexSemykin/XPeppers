@@ -28,11 +28,11 @@ public class ScoreIntStringMapper {
         equalScoreMapper.put(3, "Deuce-All");
     }
 
-    public String getStringScore(int score){
+    public String getScoreAsString(int score){
         return scoreMapper.get(score);
     }
 
-    public String getEqualScoreMapper(int score){
+    public String getEqualScoreAsString(int score){
         return equalScoreMapper.get(score);
     }
 }
