@@ -20,14 +20,6 @@ class Players {
         players.put(player2Name, 0);
     }
 
-    String getPlayer1Name() {
-        return player1Name;
-    }
-
-    String getPlayer2Name() {
-        return player2Name;
-    }
-
     int getScore(String name) {
         return players.get(name);
     }
