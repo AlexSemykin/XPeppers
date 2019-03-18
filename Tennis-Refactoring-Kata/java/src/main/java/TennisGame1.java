@@ -13,24 +13,11 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         if (p.hasEqualScores()) {
-            return getScoreStringWhenPointsAreEqual();
+            return p.getScoreStringWhenPointsAreEqual();
         } else if (p.isScoreGreaterThanThirty()) {
             return p.getScoreWhenOnePlayerHasAdvantage();
         } else {
             return p.getScoreWhenPointsAreLessThanForty();
-        }
-    }
-
-    private String getScoreStringWhenPointsAreEqual() {
-        switch (p.getScore(p.getPlayer1Name())) {
-            case 0:
-                return "Love-All";
-            case 1:
-                return "Fifteen-All";
-            case 2:
-                return "Thirty-All";
-            default:
-                return "Deuce";
         }
     }
 }

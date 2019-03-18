@@ -71,4 +71,17 @@ class Players {
         }
         return "";
     }
+
+    String getScoreStringWhenPointsAreEqual() {
+        switch (getScore(player1Name)) {
+            case 0:
+                return "Love-All";
+            case 1:
+                return "Fifteen-All";
+            case 2:
+                return "Thirty-All";
+            default:
+                return "Deuce";
+        }
+    }
 }
