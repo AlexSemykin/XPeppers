@@ -15,7 +15,7 @@ public class TennisGame1 implements TennisGame {
         if (p.hasEqualScores()) {
             return getScoreStringWhenPointsAreEqual();
         } else if (p.isScoreGreaterThanThirty()) {
-            return getScoreWhenOnePlayerHasAdvantage();
+            return p.getScoreWhenOnePlayerHasAdvantage();
         } else {
             return getScoreWhenPointsAreLessThanForty();
         }
@@ -39,15 +39,6 @@ public class TennisGame1 implements TennisGame {
         return "";
     }
 
-    private String getScoreWhenOnePlayerHasAdvantage() {
-        String score;
-        int minusResult = p.getScore(p.getPlayer1Name()) - p.getScore(p.getPlayer2Name());
-        if (minusResult == 1) score = "Advantage player1";
-        else if (minusResult == -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2";
-        return score;
-    }
 
     private String getScoreStringWhenPointsAreEqual() {
         switch (p.getScore(p.getPlayer1Name())) {

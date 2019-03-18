@@ -36,11 +36,22 @@ class Players {
            players.put(name, players.get(name) + 1);
     }
 
-    public boolean hasEqualScores() {
-        return getScore(getPlayer1Name()) == getScore(getPlayer2Name());
+    boolean hasEqualScores() {
+        return getScore(player1Name) == getScore(player2Name);
     }
 
-    public boolean isScoreGreaterThanThirty() {
-        return getScore(getPlayer1Name()) >= 4 || getScore(getPlayer2Name()) >= 4;
+    boolean isScoreGreaterThanThirty() {
+        return getScore(player1Name) >= 4 || getScore(player2Name) >= 4;
     }
+
+    String getScoreWhenOnePlayerHasAdvantage() {
+        String score;
+        int minusResult = getScore(player1Name) - getScore(player2Name);
+        if (minusResult == 1) score = "Advantage player1";
+        else if (minusResult == -1) score = "Advantage player2";
+        else if (minusResult >= 2) score = "Win for player1";
+        else score = "Win for player2";
+        return score;
+    }
+
 }
