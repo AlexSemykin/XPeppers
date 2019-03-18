@@ -54,4 +54,21 @@ class Players {
         return score;
     }
 
+    String getScoreWhenPointsAreLessThanForty() {
+        return getScoreString(getScore(player1Name)) + "-" + getScoreString(getScore(player2Name));
+    }
+
+    private String getScoreString(int tempScore) {
+        switch (tempScore) {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            case 3:
+                return "Forty";
+        }
+        return "";
+    }
 }

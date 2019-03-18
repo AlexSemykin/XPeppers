@@ -17,28 +17,9 @@ public class TennisGame1 implements TennisGame {
         } else if (p.isScoreGreaterThanThirty()) {
             return p.getScoreWhenOnePlayerHasAdvantage();
         } else {
-            return getScoreWhenPointsAreLessThanForty();
+            return p.getScoreWhenPointsAreLessThanForty();
         }
     }
-
-    private String getScoreWhenPointsAreLessThanForty() {
-        return getScoreString(p.getScore(p.getPlayer1Name())) + "-" + getScoreString(p.getScore(p.getPlayer2Name()));
-    }
-
-    private String getScoreString(int tempScore) {
-        switch (tempScore) {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-        }
-        return "";
-    }
-
 
     private String getScoreStringWhenPointsAreEqual() {
         switch (p.getScore(p.getPlayer1Name())) {
