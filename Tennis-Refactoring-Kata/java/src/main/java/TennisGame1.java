@@ -1,7 +1,7 @@
 
 public class TennisGame1 implements TennisGame {
 
-    Players p;
+    private Players p;
 
     TennisGame1(String player1Name, String player2Name) {
         p = new Players(player1Name, player2Name);
@@ -12,7 +12,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        if (p.getScore(p.getPlayer1Name()) == p.getScore(p.getPlayer2Name())) {
+        if (p.hasEqualScores()) {
             return getScoreStringWhenPointsAreEqual();
         } else if (p.getScore(p.getPlayer1Name()) >= 4 || p.getScore(p.getPlayer2Name()) >= 4) {
             return getScoreWhenOnePlayerHasAdvantage();

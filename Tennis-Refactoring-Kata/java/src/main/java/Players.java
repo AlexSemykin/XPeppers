@@ -35,4 +35,8 @@ class Players {
     void addOnePointToPlayer(String name) {
            players.put(name, players.get(name) + 1);
     }
+
+    public boolean hasEqualScores() {
+        return getScore(getPlayer1Name()) == getScore(getPlayer2Name());
+    }
 }
